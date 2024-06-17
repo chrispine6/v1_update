@@ -1,0 +1,36 @@
+<!-- posts.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-gray-900">
+    <%- include('../partials/header') %>
+
+    <h2 class="text-3xl my-8 font-bold text-gray-100 text-center">Home</h2>
+
+    <div class="grid grid-cols-6 gap-4 justify-center">
+        <div class="col-span-1 invisible" id="nav-container">
+            <%- include('../partials/nav') %>
+        </div>
+        <div class="col-span-4">
+            <%- include('../partials/recent-posts') %>
+        </div>
+    </div>
+
+    <%- include('../partials/footer') %>
+
+    <script>
+        const navContainer = document.getElementById('nav-container');
+        const barsIcon = document.querySelector('.fa-bars');
+
+        barsIcon.addEventListener('click', () => {
+            navContainer.classList.toggle('invisible');
+        });
+    </script>
+</body>
+</html>

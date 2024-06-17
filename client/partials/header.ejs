@@ -1,0 +1,16 @@
+<header class="flex flex-row justify-between items-center border-white border-b-2 py-3 px-8 bg-gray-900 text-white">
+    <div>
+        <i class="fa-solid fa-bars pr-4 cursor-pointer"></i>
+        <a href="/home" class="text-3xl font-bold">Dialogue</a>
+    </div>
+    <ul class="flex justify-center space-x-4">
+        <li><a href="/home" class="bg-gray-800 text-white px-4 py-3 rounded hover:bg-gray-700">Home</a></li>
+        <li><a href="/calendar" class="bg-gray-800 text-white px-4 py-3 rounded hover:bg-gray-700">Events</a></li>
+        <li><a href="/conversations" class="bg-gray-800 text-white px-4 py-3 rounded hover:bg-gray-700">Conversations</a></li>
+    </ul>
+    <form action="/search" method="POST" class="">
+        <input type="text" name="searchQuery" placeholder="Search..." required
+            class="rounded h-10 text-center text-white bg-gray-800 rounded-l-md focus:outline-none focus:border-blue-500">
+        <!-- <button type="submit" class="bg-gray-800 p-2 text-white rounded-r-md hover:bg-gray-700">Search</button> -->
+    </form>
+</header>

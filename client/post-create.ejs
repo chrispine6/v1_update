@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Post</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="container mx-auto p-8 max-w-md bg-gray-800 rounded-md shadow-md mt-16">
+        <h1 class="text-3xl font-bold text-blue-400 mb-8">Create Post</h1>
+        <form action="/post/create" method="POST" class="space-y-4 mb-4">
+            <div>
+                <label for="community" class="block text-gray-400">Choose Community:</label>
+                <select name="community" required class="w-full text-black px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-blue-500">
+                    <% communities.forEach(community => { %>
+                        <option value="<%= community._id %>"><%= community.name %></option>
+                    <% }); %>
+                </select>
+            </div>
+            <div>
+                <label for="title" class="block text-gray-400">Title:</label>
+                <input type="text" name="title" required class="w-full text-black px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-blue-500">
+            </div>
+            <div>
+                <label for="content" class="block text-gray-400">Content:</label>
+                <textarea name="content" required class="w-full text-black px-4 py-2 border border-gray-600 rounded-md focus:outline-none focus:border-blue-500"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Submit</button>
+        </form>
+
+        <a href="/home" class="bg-blue-500 text-white px-2 py-2 mt-2 rounded hover:bg-blue-600">Back</a>
+    </div>
+</body>
+</html>

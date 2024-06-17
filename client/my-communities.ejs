@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Communities</title>
+    <!-- Include the compiled Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div class="container mx-auto bg-gray-800 rounded-md shadow-md p-8">
+        <h1 class="text-3xl font-bold text-blue-400 mb-4">My Communities</h1>
+        <ul class="list-disc ml-8">
+            <% communities.forEach(community => { %>
+                <li class="text-blue-300 hover:underline mb-2"><a href="/community/<%= community._id %>"><%= community.name %></a></li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>

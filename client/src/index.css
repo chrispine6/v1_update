@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+body {
+  @apply bg-gray-100 text-gray-900;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Link Styles */
+a {
+  @apply text-blue-600 hover:text-blue-800;
+}
+
+/* Button Styles */
+button {
+  @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  @apply bg-blue-700;
+}
+
+/* Custom Utility Classes */
+.custom-card {
+  @apply shadow-lg rounded-lg p-6 bg-white;
+}

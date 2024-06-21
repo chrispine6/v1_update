@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversations</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="bg-gray-900 text-white">
+
+    <%- include('../partials/header') %>
+    <div class="container pt-4">
+        <div class="flex place-content-between gap-4">
+            <div class="invisible" id="nav-container">
+                <%- include('../partials/nav') %>
+            </div>
+            <div class="w-3/4 bg-gray-800 shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                <% if (connectedUsers && connectedUsers.length > 0) { %>
+                    <h2 class="text-2xl font-bold mb-4">Your Connections:</h2>
+                    <ul>
+                        <% connectedUsers.forEach(connection => { %>
+                            <li class="mb-2">
+                                <button onclick="startChat('<%= connection._id %>')" class="w-full bg-gray-700 hover:bg-gray-600 text-gray-300 font-bold py-2 px-4 rounded">
+                                    <%= connection.username %>
+                                </button>
+                            </li>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p class="text-gray-400">No connections to display.</p>
+                <% } %>
+
+                <!-- Conversations -->
+                <% if (conversations && conversations.length > 0) { %>
+                    <h2 class="text-2xl font-bold mt-8 mb-4">Your Conversations:</h2>
+                    <ul>
+                        <% conversations.forEach(conversation => { %>
+                            <% conversation.participants.forEach(participant => { %>
+                                <% if (participant._id.toString() !== currentUser._id.toString()) { %>
+                                    <li class="mb-2">
+                                        <span class="text-lg font-medium text-gray-300">
+                                            Conversation with <%= participant.username %>
+                                        </span>
+                                    </li>
+                                <% } %>
+                            <% }) %>
+                        <% }) %>
+                    </ul>
+                <% } else { %>
+                    <p class="text-gray-400 mt-8">No conversations to display.</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startChat(userId) {
+            window.location.href = '/conversations/' + userId;
+        }
+
+        function viewMessages(userId) {
+            window.location.href = '/conversations/' + userId;
+        }
+        
+        const navContainer = document.getElementById('nav-container');
+        const barsIcon = document.querySelector('.fa-bars');
+
+        barsIcon.addEventListener('click', () => {
+            navContainer.classList.toggle('invisible');
+        });
+    </script>
+
+    <%- include('../partials/footer') %>
+</body>
+</html>

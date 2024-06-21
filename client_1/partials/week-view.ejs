@@ -1,0 +1,32 @@
+<div class="week-view-container bg-gray-800 text-white">
+    <table class="min-w-full divide-y divide-gray-600">
+        <thead class="bg-gray-700">
+            <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                    Time/Day
+                </th>
+                <% ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'].forEach(day => { %>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">
+                        <%= day %>
+                    </th>
+                <% }) %>
+            </tr>
+        </thead>
+        <tbody class="bg-gray-900 divide-y divide-gray-600">
+            <% times.forEach(time => { %>
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <%= time %>
+                    </td>
+                    <% for (let day = 0; day < 7; day++) { %>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <% (events[day][time] || []).forEach(event => { %>
+                                <div><%= event.title %> - <%= event.content %></div>
+                            <% }) %>
+                        </td>
+                    <% } %>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

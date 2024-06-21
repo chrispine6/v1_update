@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <!-- Include the compiled Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Search Results</h1>
+
+        <!-- Users Section -->
+        <section class="mb-8">
+            <h2 class="text-xl font-semibold mb-4">Users</h2>
+            <% if (searchResults.users.length > 0) { %>
+                <ul>
+                    <% searchResults.users.forEach(function(user) { %>
+                        <li class="mb-2">
+                            <a href="/profile/users/<%= user.username %>" class="text-blue-500 hover:underline"><%= user.username %></a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="text-gray-400">No user matches found.</p>
+            <% } %>
+        </section>
+
+        <!-- Communities Section -->
+        <section>
+            <h2 class="text-xl font-semibold mb-4">Communities</h2>
+            <% if (searchResults.communities.length > 0) { %>
+                <ul>
+                    <% searchResults.communities.forEach(function(community) { %>
+                        <li class="mb-2">
+                            <a href="/community/<%= community._id %>" class="text-blue-500 hover:underline"><%= community.name %></a>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p class="text-gray-400">No community matches found.</p>
+            <% } %>
+        </section>
+
+        <!-- Go Back Link -->
+        <a href="#" onclick="event.preventDefault(); goBack();" class="text-blue-500 hover:underline">Go Back</a>
+    </div>
+
+    <!-- Script for Go Back Functionality -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

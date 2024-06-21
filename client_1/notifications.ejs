@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <!-- Include the compiled Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-900 text-white p-8">
+    <div class="container mx-auto">
+        <h1 class="text-3xl font-bold mb-8">Notifications</h1>
+        <% notifications.forEach(function(notification) { %>
+            <% if (notification.type === 'connection-request') { %>
+                <div class="bg-gray-800 rounded-md shadow-md p-4 mb-4">
+                    <p class="text-lg font-semibold">Connection request from: <a href="/profile/users/<%= notification.fromUser.username %>" class="text-blue-400 hover:underline"><%= notification.fromUser.username %></a></p>
+                </div>
+            <% } else if (notification.type === 'community-invite') { %>
+                <div class="bg-gray-800 rounded-md shadow-md p-4 mb-4">
+                    <p class="text-lg font-semibold">Community invite to: <a href="/community/<%= notification.community._id %>" class="text-blue-400 hover:underline"><%= notification.community.name %></a></p>
+                </div>
+            <% } %>
+        <% }); %>
+    </div>
+</body>
+</html>
